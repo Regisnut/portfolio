@@ -1,5 +1,7 @@
 ## Setup Notes
 
+### Inspired by john-smilga work
+
 1. All components ready to go (including imports)
 2. Use main.css - less imports
 3. Limit amount of components - better overview
