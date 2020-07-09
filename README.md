@@ -1,6 +1,12 @@
-## Setup Notes
+<h2 align="center">My Portfolio</h2>
 
-### Inspired by john-smilga work
+<p>demo : https://regiscode.netlify.app/</p>
+
+## 🌱 Setup Notes
+
+### Inspired by **_john-smilga_** work
+
+#### 🍃 work is online
 
 1. All components ready to go (including imports)
 2. Use main.css - less imports
@@ -17,7 +23,7 @@ const Component = () => {
 ```
 
 5. Use constants to avoid repetition.
-6. In order to follow along with the video use my backend (url below)
+6. In order to follow along with the tutoriel video, you can use john smilga's backend (url below)
 
    [strapi backend]:https://github.com/john-smilga/strapi-gatsby-porfolio-2020-api
 
@@ -36,3 +42,5 @@ const Component = () => {
       },
     },
 ```
+
+==Licensed under the MIT License, Copyright © 2020 [regisnut](https://github.com/regisnut).==
