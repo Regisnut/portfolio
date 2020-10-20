@@ -2,9 +2,10 @@
 
 <p>demo : https://regiscode.netlify.app/</p>
 
-## 🌱 Setup Notes
+## 🌱 Build Notes
 
-### Inspired by **_john-smilga_** work
+- Gatsby clean && gatsby build
+- drag and drop public folder to netlify deploy section
 
 #### 🍃 work is online
 
@@ -42,5 +43,6 @@ const Component = () => {
       },
     },
 ```
+### Inspired by **_john-smilga_** work
 
 ==Licensed under the MIT License, Copyright © 2020 [regisnut](https://github.com/regisnut).==
