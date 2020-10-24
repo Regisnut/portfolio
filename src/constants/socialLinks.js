@@ -58,5 +58,9 @@ const links = data.map((link) => {
 });
 
 export default ({ styleClass }) => {
-	return <ul className={`social-links ${styleClass ? styleClass : ''}`}>{links}</ul>;
+	return <ul className={`social-links ${styleClass ? styleClass : ''}`}>
+
+			<div className={`line flex-1`}></div>
+		{links}
+		</ul>;
 };

@@ -1,11 +1,55 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useRef, useState, useLayoutEffect } from 'react';
 import Title from './Title';
 import services from '../constants/services';
 
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, useViewportScroll, useTransform, useSpring} from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+// 	const calculateMinHeight = (height, range) => {
+//   return height + height * range;
+// };
+
+const rand = (min = 0, max = 100) => {
+  return Math.floor(Math.random() * (+max - +min)) + +min;
+};
+
 const Services = ({ title }) => {
+	const range = 0.2;
+  const { scrollY } = useViewportScroll();
+const transition = { duration: 1.4, ease: [.6, 0.01, -0.05, 0.9] }
+  const scale = useTransform(scrollY, [0,1], [1, 1.15])
+  const opacity = useTransform(scrollY, [0,1], [0.2, 1])
+
+  const ref = useRef();
+  const [offsetTop, setOffsetTop] = useState(0);
+// const [minHeight, setMinHeight] = useState("auto");
+
+ const springConfig = {
+    damping: 100,
+    stiffness: 100,
+    mass: rand(1, 3)
+  };
+
+   useLayoutEffect(() => {
+    if (!ref.current) return null;
+    const onResize = () => {
+      setOffsetTop(ref.current.offsetTop);
+    //   setMinHeight(calculateMinHeight(ref.current.offsetHeight, range));
+    };
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [ref]);
+
+  const y = useSpring(
+    useTransform(
+      scrollY,
+      [offsetTop -500, offsetTop + 500],
+      ["0%", `${range * 50}%`]
+    ),
+    springConfig
+  );
+
 	const animation = useAnimation();
 	// inView is false by default
 	const [ servicesRef, inView ] = useInView({
@@ -23,10 +67,10 @@ const Services = ({ title }) => {
 	);
 
 	return (
-		<section className="section bg-grey">
-			<Title title="services" />
+		<section   ref={ref}className="section bg-grey" style={{height:"85vh"}} id="services">
+			<Title  title="services" />
 			<motion.div
-				className="section-center services-center"
+				className="section-center services-center "
 				ref={servicesRef}
 				animate={animation}
 				initial="hidden"
@@ -42,12 +86,25 @@ const Services = ({ title }) => {
 				{services.map((service) => {
 					const { id, icon, title, text } = service;
 					return (
-						<article key={id} className="service">
+						<motion.article
+		
+			
+			initial={{ y: 0 }} 
+			
+			style={{y}}
+
+            animate={{
+                        transition: { delay: .2, ...transition },
+                   
+                  }}
+						
+						key={id} className="service">
 							{icon}
 							<h4>{title}</h4>
 							<div className="underline" />
 							<p>{text}</p>
-						</article>
+					<span>{`0${id}`}</span>
+						</motion.article>
 					);
 				})}
 			</motion.div>

@@ -5,7 +5,7 @@
 ## 🌱 Build Notes
 
 - Gatsby clean && gatsby build
-- drag and drop public folder to netlify deploy section
+- drag and drop ***public*** folder to netlify deploy section
 
 #### 🍃 work is online
 
@@ -24,10 +24,9 @@ const Component = () => {
 ```
 
 5. Use constants to avoid repetition.
-6. In order to follow along with the tutoriel video, you can use john smilga's backend (url below)
-
-   [strapi backend]:https://github.com/john-smilga/strapi-gatsby-porfolio-2020-api
-
+6. Work using 
+-GATSBY
+-STRAPI
 7. Make sure such content-types exist in your Strapi application. Or replace/delete them in gatsby-config.js
 
 ```javascript

@@ -1,5 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
+import { motion } from "framer-motion"
+
 const data = [
   {
     id: 1,
@@ -28,19 +30,41 @@ const data = [
   },
 ]
 
+ const parent = {
+    initial: { y: 20, opacity : 0 },
+    animate: {
+      y: 0,
+      opacity : 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+  const child = {
+    initial: { y: 20, opacity : 0 },
+    animate: {
+      opacity : 1 ,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.6, 0.05, -0.01, 0.9],
+      },
+    },
+  }
+
 const tempLinks = data.map(link => {
   return (
-    <li key={link.id}>
+    <motion.li variants={child} key={link.id}>
       <Link to={link.url}>{link.text}</Link>
-    </li>
+    </motion.li>
   )
 })
 // I KNOW WE CAN COMBINE IT !!!!!
 
 export default ({ styleClass }) => {
   return (
-    <ul className={`page-links ${styleClass ? styleClass : ""}`}>
+    <motion.ul variants={parent} initial="initial" animate="animate" className={`page-links ${styleClass ? styleClass : ""}`}>
       {tempLinks}
-    </ul>
+    </motion.ul>
   )
 }

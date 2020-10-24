@@ -49,6 +49,9 @@ module.exports = {
           {
             family: `Open Sans`,
           },
+          {
+            family : `GFS Didot`
+          }
         ],
       },
     },

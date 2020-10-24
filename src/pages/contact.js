@@ -1,8 +1,11 @@
 import React, { useState } from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-
 import { motion } from "framer-motion"
+import new_message from "../assets/new_message.svg"
+import {
+FaArrowRight
+} from 'react-icons/fa';
 
 const encode = data => {
   return Object.keys(data)
@@ -56,6 +59,21 @@ export default function Contact({ setPositionRef }) {
         description="Let's get in touch with my contact form for any web project"
       />
       <section className="contact-page">
+<article className="contact__aside">
+  <img src={new_message} alt="new_message"/>
+  <div className="contact__details">
+    <h1>Contact</h1>
+   
+    <h3>Connect with us</h3>
+     <div className="underline"/>
+    <p>Please leave a message, I'd like to know more about your project.</p>
+  <div className="round__icon"> 
+  <FaArrowRight className="social-icon rotate" />
+  </div>
+
+  </div>
+</article>
+
         <motion.article
           className="contact-form "
           variants={child}
@@ -136,6 +154,7 @@ export default function Contact({ setPositionRef }) {
             )}
           </form>
         </motion.article>
+
       </section>
     </Layout>
   )

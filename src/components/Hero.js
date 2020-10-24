@@ -4,9 +4,8 @@ import { Link } from "gatsby"
 import { graphql, useStaticQuery } from "gatsby"
 import SocialLinks from "../constants/socialLinks"
 import { motion } from "framer-motion"
-import { Parallax } from "react-parallax"
 import greyDots from "../assets/grey_dots.svg"
-
+import circlePink from "../assets/circlePink.svg"
 const query = graphql`
   {
     file(relativePath: { eq: "hero-img.png" }) {
@@ -21,74 +20,78 @@ const query = graphql`
 
 const Hero = () => {
   const parent = {
-    initial: { x: -800 },
+    initial: { y: 200, opacity : 0 },
     animate: {
-      x: 0,
+      y: 0,
+      opacity : 1,
       transition: {
         staggerChildren: 0.2,
       },
     },
   }
   const child = {
-    initial: { x: -800 },
+    initial: { y: 200, opacity : 0 },
     animate: {
-      x: 0,
+      opacity : 1 ,
+      y: 0,
       transition: {
-        duration: 1,
+        duration: 0.8,
         ease: [0.6, 0.05, -0.01, 0.9],
       },
     },
   }
+
+
+  
   const {
     file: {
       childImageSharp: { fluid },
     },
   } = useStaticQuery(query)
 
-  return (
+  return (<>
     <header className="hero">
+
       <div className="section-center hero-center">
         <article className="hero-info">
           <motion.div variants={parent} initial="initial" animate="animate">
             <motion.div variants={child} className="underline" />
-            <motion.h1 variants={child}>I'm Régis</motion.h1>
-            <motion.h4 variants={child}>Front-end React Developer</motion.h4>
+            <motion.h1 variants={child}>Hi, I'm Régis</motion.h1>
+            <motion.h4 variants={child}>Front-End React Developer</motion.h4>
+ <motion.h2 variants={child}>BUILDING DIGITAL <br/>PRODUCTS, BRANDS, AND <br/>EXPERIENCE</motion.h2>
+  <motion.h5 variants={child}>I SPECIALIZE IN WEB APP DEVELOPMENT, AND RESPONSIVE WEB DESIGN</motion.h5>
+
             <motion.div variants={child}>
               <Link to="/contact" className="btn">
                 contact me
               </Link>
             </motion.div>
             <motion.div variants={child}>
-              <SocialLinks variants={child} />
+              <SocialLinks  />
             </motion.div>
-            {/* <div
-              style={{
-                position: "relative",
-              }}
-            >
-              <Parallax
-                bgImage={greyDots}
-                bgImageAlt="circle field"
-                strength={300}
-                bgImageStyle={{
-                  position: "absolute",
-                  left: "10%",
-                  top: "20%",
-                  width: "500px",
-                  height: "200px",
-                  zoom: 0.5,
-                }}
-              >
-                <div style={{ height: "20vh" }} />
-              </Parallax>
-            </div> */}
+            <motion.img  variants={child} className="hero-dots" src={greyDots} alt="greyDots" />
           </motion.div>
         </article>
-
-        <Image fluid={fluid} className="hero-img"></Image>
+        <Image fluid={fluid} className="hero-img"/>
       </div>
 
-      <div className="custom-shape-divider-bottom-1593972317">
+ <img  className = "hero-circlePink" src={circlePink} alt="circlePink" />
+{/* item scroll */}
+    <motion.a href="#services" variants={parent} initial="initial" animate="animate" className="hero-scroll">
+      <motion.p variants={child}>scroll</motion.p>
+      <motion.span variants={child}/>
+    </motion.a>
+    {/* bar */}
+    {/* <aside  className="hero-vertical">
+        <span/>
+        <p>Paris - France - Digital Experience</p>
+         <span/>
+    </aside> */}
+
+    </header>
+    
+{/* divider */}
+      {/* <div className="custom-shape-divider-bottom-1593972317">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -100,9 +103,9 @@ const Hero = () => {
             className="shape-fill"
           />
         </svg>
-      </div>
-    </header>
+      </div> */}
+      </>
   )
 }
 
-export default Hero
+export default Hero;

@@ -14,8 +14,7 @@ const Layout = ({ children }) => {
       <Navbar toggleSidebar={toggleSidebar} />
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
       {children}
-      <Footer>
-        </Footer>
+      <Footer/>
     </>
   )
 }
