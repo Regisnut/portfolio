@@ -996,23 +996,69 @@ Footer
 ===============
 */
 .footer {
-  height: 12rem;
+  min-height: 20rem;
   background: #222222;
   text-align: center;
   display: grid;
   place-items: center;
+  color: var(--clr-grey-10);
+}
+
+.footer__container{
+  margin-top: 1rem;
+padding: 60px;
+display: grid;
+grid-template-columns : 1fr 1fr 1fr;
+}
+.footer__left{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.footer__left h3{
+    font-weight: lighter;
+   text-align: left;
+  font-size: 22px;
+   font-family: var(--ff-tertionary);
+}
+.footer__left p{ 
+  color: var(--clr-grey-10);
+  margin-bottom: 0.5rem;
+}
+
+.footer__right{
+  color: var(--clr-grey-10);
+display: flex;
+flex-direction: column;
+padding:0 50px;
+}
+.footer__right__link:hover{
+ color: var(--clr-primary-5);
+ transition : 0.2s ease-in;
+}
+
+
+.footer__right a{
+   color: var(--clr-grey-10);
+   text-decoration: none;
+   text-transform: uppercase;
+   font-weight: 700;
 }
 
 .footer h4 {
+  font-family: var(--ff-tertionary);
   margin-top: 0.5rem;
   color: var(--clr-grey-10);
   font-weight: normal;
   text-transform: uppercase;
+  margin-bottom: 1.5rem;
 }
 .footer-menu a {
   color: var(--clr-grey-10);
   font-weight: normal;
   font-size: smaller;
+  
   text-transform: uppercase;
 }
 .footer h4 span {
@@ -1026,6 +1072,24 @@ Footer
 }
 .footer .social-link:hover {
   color: var(--clr-primary-5);
+}
+
+@media screen and (max-width: 992px) {
+
+  .footer__container{
+    padding : 60px 24px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer__right{
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 468px) {
+.footer__right{
+  padding : 0 16px; 
+}
+
 }
 /*
 ===============
