@@ -44,8 +44,17 @@ const transition = { duration: 1.4, ease: [.6, 0.01, -0.05, 0.9] }
   const y = useSpring(
     useTransform(
       scrollY,
-      [offsetTop -500, offsetTop + 500],
-      ["0%", `${range * 50}%`]
+      [offsetTop , offsetTop ],
+      ["0%", `${range * 60}%`]
+    ),
+    springConfig
+  );
+
+   const yEven = useSpring(
+    useTransform(
+      scrollY,
+      [offsetTop -100, offsetTop +100],
+      ["0%", `${range * 60}%`]
     ),
     springConfig
   );
@@ -66,8 +75,33 @@ const transition = { duration: 1.4, ease: [.6, 0.01, -0.05, 0.9] }
 		[ animation, inView ]
 	);
 
+
+	  const [windowSizeState, setWindowSizeState] = useState({
+    width: null,
+    height: null
+  });
+
+  const updateWindowDimensions = () => {
+    setWindowSizeState({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+  };
+
+ useEffect(() => {
+    setWindowSizeState({
+      width: window.innerWidth,
+      height: window.innerHeight
+	});
+    window.addEventListener("resize", updateWindowDimensions);
+    return function cleanup() {
+      window.removeEventListener("resize", updateWindowDimensions);
+    };
+  }, []);
+
+
 	return (
-		<section   ref={ref}className="section bg-grey" style={{height:"85vh"}} id="services">
+		<section   ref={ref}className="section bg-grey" id="services" >
 			<Title  title="services" />
 			<motion.div
 				className="section-center services-center "
@@ -85,14 +119,21 @@ const transition = { duration: 1.4, ease: [.6, 0.01, -0.05, 0.9] }
 			>
 				{services.map((service) => {
 					const { id, icon, title, text } = service;
+
+					
+
+					let newY;
+if(id%2 === 0){
+ newY = yEven;
+}else{
+	newY = y;
+}
 					return (
 						<motion.article
-		
-			
 			initial={{ y: 0 }} 
 			
-			style={{y}}
-
+			style={windowSizeState.width > 790 && {y : newY}}
+		
             animate={{
                         transition: { delay: .2, ...transition },
                    

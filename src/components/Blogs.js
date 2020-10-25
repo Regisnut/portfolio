@@ -49,7 +49,7 @@ export const Blogs = ({ blogs, title, showLink }) => {
         )}
       </motion.section>
 
-      <section className="test">
+      {/* <section className="test">
         <div className="custom-shape-divider-bottom-1593971564">
           <svg
             data-name="Layer 1"
@@ -63,7 +63,7 @@ export const Blogs = ({ blogs, title, showLink }) => {
             />
           </svg>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }

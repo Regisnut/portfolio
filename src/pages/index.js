@@ -7,6 +7,8 @@ import Jobs from '../components/Jobs';
 import Projects from '../components/Projects';
 import Blogs from '../components/Blogs';
 import SEO from '../components/SEO';
+import FinalSection from "../components/FinalSection"
+import Testimonial from "../components/Testimonial"
 
 export default ({ data }) => {
 	const { allStrapiProjects: { nodes: projects }, allStrapiBlogs: { nodes: blogs } } = data;
@@ -18,6 +20,8 @@ export default ({ data }) => {
 			<Jobs />
 			<Projects projects={projects} title="featured projects" showLink />
 			<Blogs blogs={blogs} title="latest articles" showLink />
+			<FinalSection title="Ready?"/>
+			<Testimonial title="Client's reviews"/>
 		</Layout>
 	);
 };
