@@ -382,8 +382,8 @@ Sidebar
 }
 .close-btn {
   position: absolute;
-  right: 4.75%;
-  top: 2.75%;
+  right: 6.5%;
+  top: 3%;
   font-size: 2.5rem;
   background: transparent;
   border-color: transparent;
@@ -996,7 +996,7 @@ Footer
 ===============
 */
 .footer {
-  min-height: 20rem;
+  min-height: 25rem;
   background: #222222;
   text-align: center;
   display: grid;
@@ -1009,16 +1009,16 @@ Footer
 padding: 60px;
 display: grid;
 grid-template-columns : 1fr 1fr 1fr;
+align-self: center;
+
 }
 .footer__left{
   display: flex;
   flex-direction: column;
-  text-align: left;
 }
 
 .footer__left h3{
     font-weight: lighter;
-   text-align: left;
   font-size: 22px;
    font-family: var(--ff-tertionary);
 }
@@ -1086,6 +1086,16 @@ padding:0 50px;
 }
 
 @media screen and (max-width: 468px) {
+  .footer__left{
+
+  text-align: center;
+}
+    .footer__container{
+    padding : 40px 16px;
+    grid-template-columns: 1fr;
+    align-self: center;
+  }
+
 .footer__right{
   padding : 0 16px; 
 }
@@ -1520,12 +1530,10 @@ padding-left: 1rem;
 .finalSection__right{
   padding : 2rem;
   margin: 1rem;
-  /* max-width: 35rem; */
   background-image: url(../assets/blueCircle.svg);
   background-position: center;
-  
-  background-size: cover;
-
+  background-size:contain;
+  background-repeat: no-repeat;
   height: 400px;
 display: flex;
 flex-direction: column;
@@ -1536,14 +1544,11 @@ align-items: center;
 @media screen and (max-width: 676px) {
 .finalSection{
   flex-direction: column-reverse;
-  
 }
-
   .finalSection__left__details h3 {
   line-height: 25px;
 font-size: 1rem;
 }
-
 .finalSection__right{
   min-width:70%;
 }
@@ -1552,19 +1557,18 @@ font-size: 1rem;
 /* TESTIMONIAL */
 /* ------------ */
 .testimonial{
-  /* height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 .container{
-    display: flex;
-    flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
   width: 768px;
- padding:2rem;
+  padding:2rem;
 }
 .feedback{
 position: relative;

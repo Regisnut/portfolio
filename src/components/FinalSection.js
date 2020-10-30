@@ -28,9 +28,6 @@ function FinalSection({title}) {
 </article>
 {/* right */}
           <article className="finalSection__right"> 
-
-
-     {/* <img src={blueCircle} alt="blue circle"/> */}
 <h3>
     GOT A PROJECT ?
 </h3>
@@ -42,7 +39,6 @@ function FinalSection({title}) {
    { `100% SATISFIED`}
 </h4>
 </div>
-
           </article>
         
                 
