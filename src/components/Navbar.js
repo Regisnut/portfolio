@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import logo from '../assets/logo.svg';
-
-
 import { FaAlignRight } from 'react-icons/fa';
 import PageLinks from '../constants/links';
+
+import LanguageMenu from "../components/languageMenu"
+
 const Navbar = ({ toggleSidebar }) => {
+	 
 	return (
 		<nav className="navbar">
 			<div className="nav-center">

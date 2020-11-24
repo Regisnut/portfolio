@@ -4,8 +4,11 @@ import SEO from "../components/SEO"
 import { motion } from "framer-motion"
 import new_message from "../assets/new_message.svg"
 import {
-FaArrowRight
+  FaArrowRight
 } from 'react-icons/fa';
+
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const encode = data => {
   return Object.keys(data)
@@ -14,30 +17,30 @@ const encode = data => {
 }
 
 export default function Contact({ setPositionRef }) {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [text, setText] = useState("")
+  // const [name, setName] = useState("")
+  // const [email, setEmail] = useState("")
+  // const [text, setText] = useState("")
   const [showModal, setShowModal] = useState(false)
 
   // handleSubmit with Netlify form
-  const handleSubmit = async event => {
-    event.preventDefault()
-    const formDetails = { name, email, text }
+  // const handleSubmit = async event => {
+  //   event.preventDefault()
+  //   const formDetails = { name, email, text }
 
-    fetch("/?no-cache=1", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...formDetails }),
-    })
-      .then(setShowModal(true), console.log("state", { ...formDetails }))
-      .catch(error => alert(error))
-  }
+  //   fetch("/?no-cache=1", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: encode({ "form-name": "contact", ...formDetails }),
+  //   })
+  //     .then(setShowModal(true), console.log("state", { ...formDetails }))
+  //     .catch(error => alert(error))
+  // }
 
   const closeModal = () => {
     setShowModal(false)
-    setName("")
-    setEmail("")
-    setText("")
+    // setName("")
+    // setEmail("")
+    // setText("")
   }
 
   const child = {
@@ -52,6 +55,47 @@ export default function Contact({ setPositionRef }) {
     },
   }
 
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      text: ""
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .min(2, 'This name is too short!')
+        .max(30, 'Must be 30 characters or less')
+        .required('Required'),
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('Required'),
+      text: Yup.string()
+        .min(2, 'THis text is Too Short!')
+        .max(150, 'Must be 150 characters or less')
+        .required('Required'),
+    }),
+    onSubmit: (values, { setSubmitting, resetForm }) => {
+      // alert(JSON.stringify(values, null, 2));
+
+      fetch("/?no-cache=1", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "contact", ...values }),
+      })
+        .then(() => {
+          setShowModal(true),
+            console.log("state", { ...values })
+          setSubmitting(false)
+          resetForm()
+        })
+        .catch(error => alert(error))
+
+
+    },
+  })
+
+
   return (
     <Layout>
       <SEO
@@ -59,20 +103,20 @@ export default function Contact({ setPositionRef }) {
         description="Let's get in touch with my contact form for any web project"
       />
       <section className="contact-page">
-<article className="contact__aside">
-  <img src={new_message} alt="new_message"/>
-  <div className="contact__details">
-    <h1>Contact</h1>
-   
-    <h3>Connect with us</h3>
-     <div className="underline"/>
-    <p>Please leave a message, I'd like to know more about your project.</p>
-  <div className="round__icon"> 
-  <FaArrowRight className="social-icon rotate" />
-  </div>
+        <article className="contact__aside">
+          <img src={new_message} alt="new_message" />
+          <div className="contact__details">
+            <h1>Contact</h1>
 
-  </div>
-</article>
+            <h3>Connect with us</h3>
+            <div className="underline" />
+            <p>Please leave a message, I'd like to know more about your project.</p>
+            <div className="round__icon">
+              <FaArrowRight className="social-icon rotate" />
+            </div>
+
+          </div>
+        </article>
 
         <motion.article
           className="contact-form "
@@ -84,7 +128,8 @@ export default function Contact({ setPositionRef }) {
           <h4>Have a project or want to talk?</h4>
           <form
             name="contact"
-            onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
+            onSubmit={formik.handleSubmit}
             method="post"
             netlify-honeypot="bot-field"
             data-netlify="true"
@@ -92,38 +137,57 @@ export default function Contact({ setPositionRef }) {
             <input type="hidden" name="form-name" value="contact" />
             <div className="form-group">
               <input
-                required
+                // required
                 type="text"
                 placeholder="name"
                 className="form-control"
                 name="name"
-                value={name}
-                onChange={event => {
-                  setName(event.target.value)
-                }}
+                // value={name}
+                // onChange={event => {
+                //   setName(event.target.value)
+                // }}
+
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.name}
               />
+              {formik.touched.name && formik.errors.name ? (
+                <div>{formik.errors.name}</div>
+              ) : null}
               <input
-                required
+                // required
                 type="email"
                 name="email"
                 placeholder="email"
                 className="form-control"
-                onChange={event => {
-                  setEmail(event.target.value)
-                }}
+                // onChange={event => {
+                //   setEmail(event.target.value)
+                // }}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
               />
+              {formik.touched.email && formik.errors.email ? (
+                <div>{formik.errors.email}</div>
+              ) : null}
               <textarea
-                required
+                // required
                 name="text"
                 id=""
                 rows="5"
                 placeholder="your message"
                 className="form-control"
-                value={text}
-                onChange={event => {
-                  setText(event.target.value)
-                }}
+                // value={text}
+                // onChange={event => {
+                //   setText(event.target.value)
+                // }}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.text}
               />
+              {formik.touched.text && formik.errors.text ? (
+                <div>{formik.errors.text}</div>
+              ) : null}
             </div>
             <button type="submit" className="submit-btn btn">
               Send
@@ -150,8 +214,8 @@ export default function Contact({ setPositionRef }) {
                 <div className="modal-background"></div>
               </>
             ) : (
-              ""
-            )}
+                ""
+              )}
           </form>
         </motion.article>
 

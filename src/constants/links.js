@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { motion } from "framer-motion"
+import LanguageMenu from '../components/languageMenu'
 
 const data = [
   {
@@ -28,6 +29,10 @@ const data = [
     text: "contact",
     url: "contact",
   },
+  // {
+  //   id : 6,
+  //   language : <LanguageMenu/>
+  // }
 ]
 
  const parent = {
@@ -53,9 +58,15 @@ const data = [
   }
 
 const tempLinks = data.map(link => {
+
+
+
   return (
     <motion.li variants={child} key={link.id}>
-      <Link to={link.url}>{link.text}</Link>
+      {link.id !== 6 ?
+      <Link to={link.url}>{link.text}</Link> :
+       link.language
+}
     </motion.li>
   )
 })

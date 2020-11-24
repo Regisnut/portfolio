@@ -17,8 +17,8 @@ const Services = ({ title }) => {
 	const range = 0.2;
   const { scrollY } = useViewportScroll();
 const transition = { duration: 1.4, ease: [.6, 0.01, -0.05, 0.9] }
-  const scale = useTransform(scrollY, [0,1], [1, 1.15])
-  const opacity = useTransform(scrollY, [0,1], [0.2, 1])
+  // const scale = useTransform(scrollY, [0,1], [1, 1.15])
+  // const opacity = useTransform(scrollY, [0,1], [0.2, 1])
 
   const ref = useRef();
   const [offsetTop, setOffsetTop] = useState(0);

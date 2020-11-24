@@ -25,6 +25,17 @@ const SEO = ({ title, description }) => {
 		<Helmet htmlAttributes={{ lang: 'en' }} title={`${title} | ${siteTitle}`}>
 			<meta name="description" content={description || siteDesc} />
 			<meta name="image" content={image} />
+			<meta property="og:type" content="website"/>
+
+			         <link rel="canonical" href={siteUrl} />
+
+            {/* OpenGraph tags */}
+            <meta property="og:url" content={siteUrl} />
+            <meta property="og:title" title={`${title} | ${siteTitle}`} />
+            <meta property="og:description" content={description || siteDesc} />
+            <meta property="og:image" content={image} />
+       
+
 			{/* twitter cards */}
 			<meta name="twitter:card" content="summary_large_image" />
 			<meta name="twitter:creator" content={twitterUsername} />

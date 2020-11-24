@@ -6,6 +6,9 @@ import SocialLinks from "../constants/socialLinks"
 import { motion } from "framer-motion"
 import greyDots from "../assets/grey_dots.svg"
 import circlePink from "../assets/circlePink.svg"
+
+import { useTranslation } from "react-i18next"
+
 const query = graphql`
   {
     file(relativePath: { eq: "hero-img.png" }) {
@@ -19,6 +22,8 @@ const query = graphql`
 `
 
 const Hero = () => {
+    const { t } = useTranslation()
+
   const parent = {
     initial: { y: 200, opacity : 0 },
     animate: {
@@ -56,14 +61,13 @@ const Hero = () => {
         <article className="hero-info">
           <motion.div variants={parent} initial="initial" animate="animate">
             <motion.div variants={child} className="underline" />
-            <motion.h1 variants={child}>Hi, I'm Régis</motion.h1>
-            <motion.h4 variants={child}>Front-End React Developer</motion.h4>
- <motion.h2 variants={child}>BUILDING DIGITAL <br/>PRODUCTS, BRANDS, AND <br/>EXPERIENCE</motion.h2>
-  <motion.h5 variants={child}>I SPECIALIZE IN WEB APP DEVELOPMENT, AND RESPONSIVE WEB DESIGN</motion.h5>
-
+            <motion.h1 variants={child}>{t("hero.title")}</motion.h1>
+            <motion.h4 variants={child}>{t("hero.role")}</motion.h4>
+ <motion.h2 variants={child}>{t("hero.content1")}<br/>{t("hero.content2")}<br/>{t("hero.content3")}</motion.h2>
+  <motion.h5 variants={child}>{t("hero.subtitle")}</motion.h5>
             <motion.div variants={child}>
               <Link to="/contact" className="btn">
-                contact me
+   {t("hero.contact")}
               </Link>
             </motion.div>
             <motion.div variants={child}>

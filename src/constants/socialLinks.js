@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-	FaFacebookSquare,
+	// FaFacebookSquare,
 	FaLinkedin,
-	FaDribbbleSquare,
-	FaBehanceSquare,
-	FaTwitterSquare,
-	FaBrowser,
+	// FaDribbbleSquare,
+	// FaBehanceSquare,
+	// FaTwitterSquare,
+	// FaBrowser,
 	FaGithub,
 	FaInfoCircle
 } from 'react-icons/fa';

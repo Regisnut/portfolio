@@ -37,7 +37,7 @@ const Testimonial = ({title}) => {
     if (index > lastIndex) {
       setIndex(0)
     }
-  }, [index, customers])
+  }, [index])
 
   
  const parent = {

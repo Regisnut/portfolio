@@ -1,0 +1,21 @@
+
+{
+  "site": {
+    "Gatsby Default Starter": "Gatsby Default Starter",
+    "footer": "Built with Gatsby"
+  },
+  "hero": {
+    "title": "Hi, I'm Regis",
+    "role":"Front-End React Developer",
+    "content1":"BUILDING DIGITAL ",
+    "content2":"PRODUCTS, BRANDS, AND ",
+    "content3":"EXPERIENCE",
+    "subtitle":"I SPECIALIZE IN WEB APP DEVELOPMENT, AND RESPONSIVE WEB DESIGN",
+    "contact": "CONTACT ME"
+  },
+  "page2": {
+    "title": "Hi from the second page",
+    "content": "Welcome to page 2",
+    "link": "Go back to the homepage"
+  }
+}

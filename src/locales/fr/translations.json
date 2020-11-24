@@ -1,0 +1,20 @@
+{
+  "site": {
+    "Gatsby Default Starter": "Gatsby fr",
+    "footer": "fr Gatsby fr"
+  },
+  "hero": {
+    "title": "Hi, je suis Regis",
+     "role":"Front-End React Developpeur",
+    "content1":"CREATION D'EXPERIENCES ",
+    "content2":"DIGITALES, ET PRODUITS",
+    "content3":"WEBDESIGN",
+    "subtitle":"JE ME SPECIALISE EN DEVELOPPEMENT WEB APP, ET RESPONSIVE WEB DESIGN",
+    "contact": "CONTACTEZ-MOI"
+  },
+  "page2": {
+    "title": "fr",
+    "content": "fr",
+    "link": "fr"
+  }
+}

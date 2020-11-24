@@ -1,11 +1,13 @@
 import React from 'react'
-import {Link} from "gatsby"
 import {
 FaArrowRight
 } from 'react-icons/fa';
 import Title from "./Title"
+import { RoughNotation } from "react-rough-notation";
+import {Link} from "gatsby"
 
 function FinalSection({title}) {
+  
     return (
         <section className="section bg-grey">
              <Title title={title} />
@@ -16,11 +18,11 @@ function FinalSection({title}) {
 <div className="finalSection__line"></div>
 <div className="finalSection__left__details">
     <h3>
-        Let me know if you want to talk about your potential project. I’m available for freelance work.
+           Let me know if you want to talk about your potential project. I’m available for freelance work.
     </h3>
       <div >
               <Link to="/contact" className="btn">
-                contact me
+                  contact me
               </Link>
             </div>
   
@@ -29,19 +31,17 @@ function FinalSection({title}) {
 {/* right */}
           <article className="finalSection__right"> 
 <h3>
-    GOT A PROJECT ?
+       GOT A PROJECT ?
 </h3>
 <div className="finalSection__footer">
        <div className="round__icon"> 
   <FaArrowRight className="rotate" />
   </div>
 <h4>
-   { `100% SATISFIED`}
+   <RoughNotation type="highlight" show={true} color="#f3e5dd">{ `100% SATISFIED`}</RoughNotation>
 </h4>
 </div>
           </article>
-        
-                
            </main>
         </section>
     )

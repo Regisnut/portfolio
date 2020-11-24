@@ -1,9 +1,8 @@
 import React from 'react';
-import { FaCode, FaSketch, FaAndroid } from 'react-icons/fa';
+// import { FaCode, FaSketch, FaAndroid } from 'react-icons/fa';
 import branding from "../assets/branding.svg"
 import coding from "../assets/coding.svg"
 import mobile from "../assets/mobile.svg"
-import motion from "framer-motion"
 
 export default [
 	{

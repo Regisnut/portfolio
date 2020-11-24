@@ -20,8 +20,8 @@ export default ({ data }) => {
 			<Jobs />
 			<Projects projects={projects} title="featured projects" showLink />
 			<Blogs blogs={blogs} title="latest articles" showLink />
-			<FinalSection title="Ready?"/>
-			<Testimonial title="Client's reviews"/>
+			<FinalSection title="Ready?" />
+			<Testimonial title="Client's reviews" />
 		</Layout>
 	);
 };
