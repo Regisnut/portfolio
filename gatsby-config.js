@@ -10,7 +10,7 @@ module.exports = {
     description:
       "This is my WebDev Portfolio WebSite, I am a front-end developer, willing to provide fun and modern web experience.",
     author: "@regiscode",
-     keywords: [`site internet`, `website`, `webdesign`, `webdevelopment`,`web`, `digital`],
+    keywords: [`site internet`, `website`, `webdesign`, `webdevelopment`, `web`, `digital`],
     twitterUsername: "@regisnut",
     image: "/twitter-img.png",
     siteUrl: "https://regiscode.netlify.app",
@@ -40,18 +40,23 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts-v2`,
       options: {
         fonts: [
           {
             family: `Roboto`,
-            variants: [`400`, `700`],
+            variable: true,
+            weights: ['200..900']
           },
           {
             family: `Open Sans`,
+            variable: true,
+            weights: ['200..900']
           },
           {
-            family : `GFS Didot`
+            family: `GFS Didot`,
+            variable: true,
+            weights: ['200..900']
           }
         ],
       },

@@ -16,31 +16,12 @@ const encode = data => {
     .join("&")
 }
 
-export default function Contact({ setPositionRef }) {
-  // const [name, setName] = useState("")
-  // const [email, setEmail] = useState("")
-  // const [text, setText] = useState("")
+export default function Contact() {
+
   const [showModal, setShowModal] = useState(false)
-
-  // handleSubmit with Netlify form
-  // const handleSubmit = async event => {
-  //   event.preventDefault()
-  //   const formDetails = { name, email, text }
-
-  //   fetch("/?no-cache=1", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //     body: encode({ "form-name": "contact", ...formDetails }),
-  //   })
-  //     .then(setShowModal(true), console.log("state", { ...formDetails }))
-  //     .catch(error => alert(error))
-  // }
 
   const closeModal = () => {
     setShowModal(false)
-    // setName("")
-    // setEmail("")
-    // setText("")
   }
 
   const child = {
@@ -76,7 +57,6 @@ export default function Contact({ setPositionRef }) {
         .required('Required'),
     }),
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      // alert(JSON.stringify(values, null, 2));
 
       fetch("/?no-cache=1", {
         method: "POST",
@@ -110,7 +90,7 @@ export default function Contact({ setPositionRef }) {
 
             <h3>Connect with us</h3>
             <div className="underline" />
-            <p>Please leave a message, I'd like to know more about your project.</p>
+            <p>Please leave a message, I&#39;d like to know more about your project.</p>
             <div className="round__icon">
               <FaArrowRight className="social-icon rotate" />
             </div>
